@@ -1,12 +1,13 @@
-import React from 'react'
-import { View, Text } from 'react-native';
+import React from 'react';
+import {View, Text} from 'react-native';
+import StatusBarComponent from '../components/StatusBarComponent';
 
 const NoticiasScreen = () => {
   return (
     <View>
-        <Text>Hola mundo</Text>
+      <StatusBarComponent/>
     </View>
-  )
-}
+  );
+};
 
-export default NoticiasScreen
+export default NoticiasScreen;
