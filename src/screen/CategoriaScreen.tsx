@@ -1,10 +1,18 @@
 import React from 'react'
 import { View, Text } from 'react-native';
+import StatusBarComponent from '../components/StatusBarComponent';
+import TitleComponent from '../components/TitleComponent';
 
 const CategoriaScreen = () => {
   return (
-    <View>
-        <Text>Hola mundo</Text>
+    <View
+      style={{
+        backgroundColor: 'white',
+        height: '100%',
+      }}
+    >
+      <StatusBarComponent />
+      <TitleComponent />
     </View>
   )
 }
