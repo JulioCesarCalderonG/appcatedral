@@ -8,7 +8,6 @@ const NoticiasScreen = () => {
   return (
     <View style={{backgroundColor: 'white', height: '100%'}}>
       <StatusBarComponent />
-      <TitleComponent />
       <ScrollView>
         <PostComponent />
         {/* <View

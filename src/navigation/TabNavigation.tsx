@@ -4,6 +4,7 @@ import UbicanosScreen from '../screen/UbicanosScreen';
 import CategoriaScreen from '../screen/CategoriaScreen';
 import { Text } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons'
+import HomeScreen from '../screen/HomeScreen';
 const Tab = createBottomTabNavigator();
 
 const TabNavigation=()=> {
@@ -18,7 +19,7 @@ const TabNavigation=()=> {
           tabBarIcon:({color,focused,size})=>{
             let iconName="";
             switch (route.name) {
-              case 'Noticias':
+              case 'Home':
                   iconName='home-outline'
                 break;
               case 'Ubicanos':
@@ -34,7 +35,7 @@ const TabNavigation=()=> {
           }
         })}
     >
-      <Tab.Screen name="Noticias" component={NoticiasScreen} />
+      <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Ubicanos" component={UbicanosScreen} />
       <Tab.Screen name="Categoria" component={CategoriaScreen} />
     </Tab.Navigator>

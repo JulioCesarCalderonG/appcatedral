@@ -3,6 +3,7 @@ import { View, Text, ScrollView } from 'react-native';
 import StatusBarComponent from '../components/StatusBarComponent';
 import TitleComponent from '../components/TitleComponent';
 import LugaresComponent from '../components/LugaresComponent';
+import MapaComponent from '../components/MapaComponent';
 
 const UbicanosScreen = () => {
   return (
@@ -17,8 +18,9 @@ const UbicanosScreen = () => {
       
       <ScrollView>
       <LugaresComponent/>
-      <Text style={{color:'black'}}>Hola mundo</Text>
+      <MapaComponent/>
       </ScrollView>
+      
       
     </View>
   )
