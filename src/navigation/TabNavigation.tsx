@@ -5,6 +5,7 @@ import CategoriaScreen from '../screen/CategoriaScreen';
 import { Text } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons'
 import HomeScreen from '../screen/HomeScreen';
+import StackNavigation from './StackNavigation';
 const Tab = createBottomTabNavigator();
 
 const TabNavigation=()=> {
@@ -25,7 +26,7 @@ const TabNavigation=()=> {
               case 'Ubicanos':
                   iconName='navigate-circle-outline'
                 break;
-              case 'Categoria':
+              case 'Stack':
                   iconName='layers-outline'
                 break;
               default:
@@ -37,7 +38,7 @@ const TabNavigation=()=> {
     >
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Ubicanos" component={UbicanosScreen} />
-      <Tab.Screen name="Categoria" component={CategoriaScreen} />
+      <Tab.Screen name="Stack" component={StackNavigation} />
     </Tab.Navigator>
   );
 }

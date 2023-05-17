@@ -9,7 +9,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Carousel from 'react-native-snap-carousel';
+import Carousel,{Pagination} from 'react-native-snap-carousel';
 import {Dimensions} from 'react-native';
 const {height: screenHeight, width: screenWidth} = Dimensions.get('window');
 interface Slide {
@@ -18,6 +18,7 @@ interface Slide {
   img: ImageSourcePropType;
 }
 const PostComponent = () => {
+  const [activeIndex, setActiveIndex] = useState(0)
   const postInfo = [
     {
       postTitle: 'Titulo',
@@ -73,6 +74,38 @@ const PostComponent = () => {
     },
     {
       title: 'Titulo 3',
+      desc: 'Ex amet duis amet nulla. Aliquip ea Lorem ea culpa consequat proident. Nulla tempor esse ad tempor sit amet Lorem. Velit ea labore aute pariatur commodo duis veniam enim.',
+      img: require('../assets/img/imagen.jpg'),
+    },
+    {
+      title: 'Titulo 3',
+      desc: 'Ex amet duis amet nulla. Aliquip ea Lorem ea culpa consequat proident. Nulla tempor esse ad tempor sit amet Lorem. Velit ea labore aute pariatur commodo duis veniam enim.',
+      img: require('../assets/img/imagen.jpg'),
+    },
+    {
+      title: 'Titulo 3',
+      desc: 'Ex amet duis amet nulla. Aliquip ea Lorem ea culpa consequat proident. Nulla tempor esse ad tempor sit amet Lorem. Velit ea labore aute pariatur commodo duis veniam enim.',
+      img: require('../assets/img/imagen.jpg'),
+    },
+  ];
+  const items2: Slide[] = [
+    {
+      title: 'Titulo 1',
+      desc: 'Ea et eu enim fugiat sunt reprehenderit sunt aute quis tempor ipsum cupidatat et.',
+      img: require('../assets/img/imagen.jpg'),
+    },
+    {
+      title: 'Titulo 2',
+      desc: 'Anim est quis elit proident magna quis cupidatat culpa labore Lorem ea. Exercitation mollit velit in aliquip tempor occaecat dolor minim amet dolor enim cillum excepteur. ',
+      img: require('../assets/img/imagen.jpg'),
+    },
+    {
+      title: 'Titulo 3',
+      desc: 'Ex amet duis amet nulla. Aliquip ea Lorem ea culpa consequat proident. Nulla tempor esse ad tempor sit amet Lorem. Velit ea labore aute pariatur commodo duis veniam enim.',
+      img: require('../assets/img/imagen.jpg'),
+    },
+    {
+      title: 'Titulo 4',
       desc: 'Ex amet duis amet nulla. Aliquip ea Lorem ea culpa consequat proident. Nulla tempor esse ad tempor sit amet Lorem. Velit ea labore aute pariatur commodo duis veniam enim.',
       img: require('../assets/img/imagen.jpg'),
     },
@@ -154,11 +187,24 @@ const PostComponent = () => {
               }}>
               <Carousel
                 //ref={(c) => { this._carousel = c; }}
-                data={items}
+                data={(data.likes===765 ? items : items2)}
                 renderItem={({item}: any) => renderItems(item)}
                 sliderWidth={350}
                 itemWidth={350}
-                layout="default"
+                layout={'tinder'}
+                onSnapToItem={(index)=>{
+                  setActiveIndex(index)
+                }}
+              />
+              <Pagination
+                dotsLength={data.likes===765 ? items.length : items2.length}
+                activeDotIndex={activeIndex}
+                dotStyle={{
+                  width:10,
+                  height:10,
+                  borderRadius:10,
+                  backgroundColor:'#5856D6'
+                }}
               />
             </View>
 

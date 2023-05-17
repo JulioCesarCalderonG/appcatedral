@@ -14,8 +14,7 @@ const UbicanosScreen = () => {
       }}
     >
       <StatusBarComponent />
-      <TitleComponent />
-      
+      <TitleComponent title='Ubicanos Aqui'/>
       <ScrollView>
       <LugaresComponent/>
       <MapaComponent/>
