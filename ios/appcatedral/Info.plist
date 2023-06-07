@@ -54,6 +54,16 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Lobster-Regular.ttf</string>
+		<string>Cardo-Bold.ttf</string>
+		<string>Cardo-Italic.ttf</string>
+		<string>Cardo-Regular.ttf</string>
+		<string>Neonderthaw-Regular.ttf</string>
+		<string>BungeeShade-Regular.ttf</string>
+		<string>CabinSketch-Bold.ttf</string>
+		<string>CabinSketch-Regular.ttf</string>
+		<string>FrederickatheGreat-Regular.ttf</string>
+		<string>LeckerliOne-Regular.ttf</string>
+		<string>Chewy-Regular.ttf</string>
 	</array>
 </dict>
 </plist>

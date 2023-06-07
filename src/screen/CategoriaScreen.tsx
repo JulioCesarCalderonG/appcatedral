@@ -3,20 +3,26 @@ import { View, Text, TouchableOpacity, Image, ScrollView } from 'react-native';
 import StatusBarComponent from '../components/StatusBarComponent';
 import TitleComponent from '../components/TitleComponent';
 import { Container, Row, Col } from 'react-native-flex-grid';
+import { StackScreenProps } from '@react-navigation/stack';
+
+interface Props extends StackScreenProps<any, any> { };
+
 
 interface Categoria {
   id: number,
   titulo: string,
-  img: any
+  img: any,
+  link?:()=>void;
 }
 
-const CategoriaScreen = () => {
+const CategoriaScreen = ({navigation}:Props) => {
 
   const listCategoria: Categoria[] = [
     {
       id: 1,
       titulo: 'Oraciones',
-      img: require('../assets/img/oracion.png')
+      img: require('../assets/img/oracion.png'),
+      link: ()=>{navigation.navigate('Oracion')}
     },
     {
       id: 2,
@@ -30,49 +36,34 @@ const CategoriaScreen = () => {
     },
     {
       id: 4,
-      titulo: 'Ministerios',
-      img: require('../assets/img/chico.png')
-    },
-    {
-      id: 5,
-      titulo: 'Liturgia de la Palabra',
+      titulo: 'Ubicanos',
       img: require('../assets/img/nota.png')
     },
     {
+      id: 5,
+      titulo: 'Cancionero',
+      img: require('../assets/img/chico.png')
+    },
+    {
       id: 6,
-      titulo: 'Ministerios',
+      titulo: 'Noticias',
       img: require('../assets/img/chico.png')
     },
     {
       id: 7,
-      titulo: 'Ministerios',
+      titulo: 'Directorio',
       img: require('../assets/img/chico.png')
     },
     {
       id: 8,
-      titulo: 'Liturgia de la Palabra',
-      img: require('../assets/img/nota.png')
+      titulo: 'Ministerios',
+      img: require('../assets/img/chico.png')
     },
     {
       id: 9,
-      titulo: 'Ministerios',
-      img: require('../assets/img/chico.png')
-    },
-    {
-      id: 10,
-      titulo: 'Ministerios',
-      img: require('../assets/img/chico.png')
-    },
-    {
-      id: 11,
-      titulo: 'Liturgia de la Palabra',
+      titulo: 'Materiales Pastorales',
       img: require('../assets/img/nota.png')
     },
-    {
-      id: 12,
-      titulo: 'Ministerios',
-      img: require('../assets/img/chico.png')
-    }
   ]
 
   return (
@@ -113,6 +104,7 @@ const CategoriaScreen = () => {
                         elevation: 6,
                       }}
                       activeOpacity={0.6}
+                      onPress={resp.link}
                     >
                       <View style={{
                         width: '30%'
@@ -121,7 +113,7 @@ const CategoriaScreen = () => {
                       </View>
                       <View
                         style={{
-                          width: '60%'
+                          width: '70%'
                         }}
                       >
                         <Text style={{ color: 'black', fontWeight: 'bold' }}>{resp.titulo}</Text>

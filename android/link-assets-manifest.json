@@ -2,8 +2,48 @@
   "migIndex": 1,
   "data": [
     {
+      "path": "assets/fonts/BungeeShade-Regular.ttf",
+      "sha1": "ba5515eeed9add3dde10e5195faf9b3a47c591b3"
+    },
+    {
+      "path": "assets/fonts/CabinSketch-Bold.ttf",
+      "sha1": "ff53f010c8e0abb5252b332069c92cb3e2febd1e"
+    },
+    {
+      "path": "assets/fonts/CabinSketch-Regular.ttf",
+      "sha1": "c9ba1b52ae2735e7e255c974e16bfe5f354dde60"
+    },
+    {
+      "path": "assets/fonts/Cardo-Bold.ttf",
+      "sha1": "b29f4ca8d183e351b907b81204fbb5944dffe69a"
+    },
+    {
+      "path": "assets/fonts/Cardo-Italic.ttf",
+      "sha1": "4dd131db86585590c6a3930382042c288a3f0119"
+    },
+    {
+      "path": "assets/fonts/Cardo-Regular.ttf",
+      "sha1": "ac5eb3f9a3b9c1e5aaf8a5c9b871ed89634d289f"
+    },
+    {
+      "path": "assets/fonts/Chewy-Regular.ttf",
+      "sha1": "a3ad025edbfd8e4c49ca201e2478d51e1027ef1c"
+    },
+    {
+      "path": "assets/fonts/FrederickatheGreat-Regular.ttf",
+      "sha1": "fa23748932f92c01b80d0e1d6090ff9a133662f3"
+    },
+    {
+      "path": "assets/fonts/LeckerliOne-Regular.ttf",
+      "sha1": "c795150d84e3dec5bd65b83989114a4b72085b48"
+    },
+    {
       "path": "assets/fonts/Lobster-Regular.ttf",
       "sha1": "42cb9e7e75f8523c3b3bf938b9a2b07bc6886eba"
+    },
+    {
+      "path": "assets/fonts/Neonderthaw-Regular.ttf",
+      "sha1": "2c73a6f93d4a5e8c4e8fae97aa5fd30a8230d4cd"
     }
   ]
 }
