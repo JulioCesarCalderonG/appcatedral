@@ -88,6 +88,9 @@ const TipoOracionScreen = ({route,navigation}:Props) => {
             return (
 
               <TouchableOpacity
+                onPress={()=>{
+                  navigation.navigate('CapaOracion',{title:resp.titulo,descripcion:resp.descripcion})
+                }}
                 key={resp.id}
                 style={{
                   flexDirection: 'row',

@@ -32,7 +32,8 @@ const CategoriaScreen = ({navigation}:Props) => {
     {
       id: 3,
       titulo: 'Liturgia de la Palabra',
-      img: require('../assets/img/nota.png')
+      img: require('../assets/img/nota.png'),
+      link: ()=>{navigation.navigate('Liturgia')}
     },
     {
       id: 4,
@@ -42,7 +43,8 @@ const CategoriaScreen = ({navigation}:Props) => {
     {
       id: 5,
       titulo: 'Cancionero',
-      img: require('../assets/img/chico.png')
+      img: require('../assets/img/chico.png'),
+      link: ()=>{navigation.navigate('Cancionero')}
     },
     {
       id: 6,

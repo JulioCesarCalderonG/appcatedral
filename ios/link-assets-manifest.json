@@ -2,6 +2,10 @@
   "migIndex": 1,
   "data": [
     {
+      "path": "assets/fonts/AbrilFatface-Regular.ttf",
+      "sha1": "545553bf8733c6edc2846ba1b420f19e4a6ff2de"
+    },
+    {
       "path": "assets/fonts/BungeeShade-Regular.ttf",
       "sha1": "ba5515eeed9add3dde10e5195faf9b3a47c591b3"
     },
@@ -32,6 +36,10 @@
     {
       "path": "assets/fonts/FrederickatheGreat-Regular.ttf",
       "sha1": "fa23748932f92c01b80d0e1d6090ff9a133662f3"
+    },
+    {
+      "path": "assets/fonts/GlassAntiqua-Regular.ttf",
+      "sha1": "50ed4ace3c9a3db24e23063bee6e55902907705a"
     },
     {
       "path": "assets/fonts/LeckerliOne-Regular.ttf",

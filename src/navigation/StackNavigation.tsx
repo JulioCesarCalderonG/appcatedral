@@ -4,6 +4,12 @@ import MinisterioScreen from '../screen/MinisterioScreen';
 import IniciacionScreen from '../screen/IniciacionScreen';
 import OracionesScreen from '../screen/OracionesScreen';
 import TipoOracionScreen from '../screen/TipoOracionScreen';
+import CapaOracionScreen from '../screen/CapaOracionScreen';
+import LiturgiaScreen from '../screen/LiturgiaScreen';
+import CapaLiturgiaScreen from '../screen/CapaLiturgiaScreen';
+import CancioneroScreen from '../screen/CancioneroScreen';
+import TipoCancioneroScreen from '../screen/TipoCancioneroScreen';
+import CapaCancioneroScreen from '../screen/CapaCancioneroScreen';
 
 
 
@@ -15,6 +21,24 @@ export type RootStackParams = {
   TipoOracion:{
     id:number,
     title:string
+  },
+  CapaOracion:{
+    title:string,
+    descripcion:string
+  },
+  Liturgia:undefined,
+  CapaLiturgia:{
+    id:number,
+    fecha:string
+  },
+  Cancionero:undefined,
+  TipoCancionero:{
+    id:number,
+    title:string
+  },
+  CapaCancionero:{
+    title:string,
+    descripcion:string
   }
 }
 
@@ -34,6 +58,12 @@ const StackNavigation =()=> {
       <Stack.Screen name="Iniciacion" component={IniciacionScreen} />
       <Stack.Screen name="Oracion" component={OracionesScreen} />
       <Stack.Screen name="TipoOracion" component={TipoOracionScreen} />
+      <Stack.Screen name="CapaOracion" component={CapaOracionScreen} />
+      <Stack.Screen name="Liturgia" component={LiturgiaScreen} />
+      <Stack.Screen name="CapaLiturgia" component={CapaLiturgiaScreen} />
+      <Stack.Screen name="Cancionero" component={CancioneroScreen} />
+      <Stack.Screen name="TipoCancionero" component={TipoCancioneroScreen} />
+      <Stack.Screen name="CapaCancionero" component={CapaCancioneroScreen} />
     </Stack.Navigator>
   );
 }

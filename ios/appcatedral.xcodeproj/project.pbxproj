@@ -25,6 +25,8 @@
 		C75BD225090E4B4DA96A3C4B /* FrederickatheGreat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF07B027D18049EE9C94EC8D /* FrederickatheGreat-Regular.ttf */; };
 		E37876A67B704E75AF9BDA98 /* LeckerliOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1AD18200B6E6467E9ED7CA0F /* LeckerliOne-Regular.ttf */; };
 		13737FC0C0B244F1A67318F3 /* Chewy-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F7D249D5E014E49ABAF1807 /* Chewy-Regular.ttf */; };
+		8E2057E9DB474FC2A21FE041 /* AbrilFatface-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D867945DDFCC431CBDB72251 /* AbrilFatface-Regular.ttf */; };
+		ADE4A7B210464E21AC3C0D59 /* GlassAntiqua-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74678C1C21E142E4B0D0C74A /* GlassAntiqua-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,8 @@
 		FF07B027D18049EE9C94EC8D /* FrederickatheGreat-Regular.ttf */ = {isa = PBXFileReference; name = "FrederickatheGreat-Regular.ttf"; path = "../assets/fonts/FrederickatheGreat-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		1AD18200B6E6467E9ED7CA0F /* LeckerliOne-Regular.ttf */ = {isa = PBXFileReference; name = "LeckerliOne-Regular.ttf"; path = "../assets/fonts/LeckerliOne-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		2F7D249D5E014E49ABAF1807 /* Chewy-Regular.ttf */ = {isa = PBXFileReference; name = "Chewy-Regular.ttf"; path = "../assets/fonts/Chewy-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D867945DDFCC431CBDB72251 /* AbrilFatface-Regular.ttf */ = {isa = PBXFileReference; name = "AbrilFatface-Regular.ttf"; path = "../assets/fonts/AbrilFatface-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		74678C1C21E142E4B0D0C74A /* GlassAntiqua-Regular.ttf */ = {isa = PBXFileReference; name = "GlassAntiqua-Regular.ttf"; path = "../assets/fonts/GlassAntiqua-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +189,8 @@
 				FF07B027D18049EE9C94EC8D /* FrederickatheGreat-Regular.ttf */,
 				1AD18200B6E6467E9ED7CA0F /* LeckerliOne-Regular.ttf */,
 				2F7D249D5E014E49ABAF1807 /* Chewy-Regular.ttf */,
+				D867945DDFCC431CBDB72251 /* AbrilFatface-Regular.ttf */,
+				74678C1C21E142E4B0D0C74A /* GlassAntiqua-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -297,6 +303,8 @@
 				C75BD225090E4B4DA96A3C4B /* FrederickatheGreat-Regular.ttf in Resources */,
 				E37876A67B704E75AF9BDA98 /* LeckerliOne-Regular.ttf in Resources */,
 				13737FC0C0B244F1A67318F3 /* Chewy-Regular.ttf in Resources */,
+				8E2057E9DB474FC2A21FE041 /* AbrilFatface-Regular.ttf in Resources */,
+				ADE4A7B210464E21AC3C0D59 /* GlassAntiqua-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
