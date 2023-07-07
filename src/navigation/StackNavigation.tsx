@@ -10,6 +10,8 @@ import CapaLiturgiaScreen from '../screen/CapaLiturgiaScreen';
 import CancioneroScreen from '../screen/CancioneroScreen';
 import TipoCancioneroScreen from '../screen/TipoCancioneroScreen';
 import CapaCancioneroScreen from '../screen/CapaCancioneroScreen';
+import DirectorioScreen from '../screen/DirectorioScreen';
+import TipoDirectorio from '../screen/TipoDirectorio';
 
 
 
@@ -39,7 +41,12 @@ export type RootStackParams = {
   CapaCancionero:{
     title:string,
     descripcion:string
-  }
+  },
+  Directorio:undefined,
+  TipoDirectorio:{
+    id:number,
+    title:string
+  },
 }
 
 
@@ -64,6 +71,8 @@ const StackNavigation =()=> {
       <Stack.Screen name="Cancionero" component={CancioneroScreen} />
       <Stack.Screen name="TipoCancionero" component={TipoCancioneroScreen} />
       <Stack.Screen name="CapaCancionero" component={CapaCancioneroScreen} />
+      <Stack.Screen name="Directorio" component={DirectorioScreen} />
+      <Stack.Screen name="TipoDirectorio" component={TipoDirectorio} />
     </Stack.Navigator>
   );
 }

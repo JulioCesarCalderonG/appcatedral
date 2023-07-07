@@ -54,7 +54,8 @@ const CategoriaScreen = ({navigation}:Props) => {
     {
       id: 7,
       titulo: 'Directorio',
-      img: require('../assets/img/chico.png')
+      img: require('../assets/img/chico.png'),
+      link: ()=>{navigation.navigate('Directorio')}
     },
     {
       id: 8,

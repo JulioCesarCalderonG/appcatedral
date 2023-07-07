@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   containerImagen: {
     flexDirection: 'row',
     marginLeft: -20,
-    marginTop: 60,
+    marginTop: 40,
   },
   imgTitulo: {
     width: 60,
