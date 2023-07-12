@@ -1,61 +1,34 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native';
+import { Directorio, ResultDirectorios } from '../interface/directorio.interface';
+import vapApi from '../api/apiVap';
 
 const LugaresComponent = () => {
 
-  const lugares = [
+  const [directorio, setDirectorio] = useState<Directorio[]>([
     {
-      id: 1,
-      name: 'Your Story',
-      image: require('../assets/img/imagen.jpg')
-    },
-    {
-      id: 2,
-      name: 'Your Story',
-      image: require('../assets/img/imagen.jpg')
-    },
-    {
-      id: 3,
-      name: 'Your Story',
-      image: require('../assets/img/imagen.jpg')
-    },
-    {
-      id: 4,
-      name: 'Your Story',
-      image: require('../assets/img/imagen.jpg')
-    },
-    {
-      id: 5,
-      name: 'Your Story',
-      image: require('../assets/img/imagen.jpg')
-    },
-    {
-      id: 6,
-      name: 'Your Story',
-      image: require('../assets/img/imagen.jpg')
-    },
-    {
-      id: 7,
-      name: 'Your Story',
-      image: require('../assets/img/imagen.jpg')
-    },
-    {
-      id: 8,
-      name: 'Your Story',
-      image: require('../assets/img/imagen.jpg')
-    },
-    {
-      id: 9,
-      name: 'Your Story',
-      image: require('../assets/img/imagen.jpg')
-    },
-    {
-      id: 10,
-      name: 'Your Story',
-      image: require('../assets/img/imagen.jpg')
+      direccion:'',
+      estado:1,
+      id:0,
+      imagen:'',
+      lat:0,
+      lng:0,
+      logo:'',
+      nombre:'',
+      social:'',
+      telefono:''
     }
-  ]
+  ]);
 
+  const mostrarDirectorio = async()=>{
+    const resp = await vapApi.get<ResultDirectorios>('/directorio',{params:{estado:1}});
+    console.log(resp.data.directorio);
+    setDirectorio(resp.data.directorio);
+  }
+  useEffect(() => {
+    mostrarDirectorio();
+  }, [])
+  
   return (
     <ScrollView
     horizontal={true}
@@ -63,7 +36,7 @@ const LugaresComponent = () => {
       style={{paddingVertical: 20}}
     >
       {
-        lugares.map((data, index) => {
+        directorio.map((data, index) => {
           return (
             <TouchableOpacity
               key={index}
@@ -89,7 +62,7 @@ const LugaresComponent = () => {
                     alignItems: 'center',
                   }}>
                   <Image
-                    source={data.image}
+                    source={{uri:`http://192.168.1.34:4000/api/directorio/logo/${data.logo}`}}
                     style={{
                       resizeMode: 'cover',
                       width: '92%',
@@ -102,10 +75,12 @@ const LugaresComponent = () => {
                 <Text
                   style={{
                     textAlign: 'center',
+                    color:'black',
+                    fontFamily:'Chewy-Regular',
                     fontSize: 10,
                     opacity: data.id == 0 ? 1 : 0.5,
                   }}>
-                  {data.name}
+                  {data.nombre.slice(0,11)}
                 </Text>
               </View>
             </TouchableOpacity>

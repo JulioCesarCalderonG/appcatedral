@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -11,6 +11,8 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 import Carousel,{Pagination} from 'react-native-snap-carousel';
 import {Dimensions} from 'react-native';
+import { Imagen, Noticia, ResultNoticias } from '../interface/noticia.interface';
+import vapApi from '../api/apiVap';
 const {height: screenHeight, width: screenWidth} = Dimensions.get('window');
 interface Slide {
   title: string;
@@ -18,99 +20,30 @@ interface Slide {
   img: ImageSourcePropType;
 }
 const PostComponent = () => {
-  const [activeIndex, setActiveIndex] = useState(0)
-  const postInfo = [
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [listNoticia, setListNoticia] = useState<Noticia[]>([
     {
-      postTitle: 'Titulo',
-      subtitle:'Subtitulo',
-      postPersonImage: require('../assets/img/imagen.jpg'),
-      postImage: require('../assets/img/imagen.jpg'),
-      likes: 765,
-      isLiked: false,
-    },
-    {
-      postTitle: 'Titulo',
-      subtitle:'Subtitulo',
-      postPersonImage: require('../assets/img/imagen.jpg'),
-      postImage: require('../assets/img/imagen.jpg'),
-      likes: 764,
-      isLiked: false,
-    },
-    {
-      postTitle: 'Titulo',
-      subtitle:'Subtitulo',
-      postPersonImage: require('../assets/img/imagen.jpg'),
-      postImage: require('../assets/img/imagen.jpg'),
-      likes: 763,
-      isLiked: false,
-    },
-    {
-      postTitle: 'Titulo',
-      subtitle:'Subtitulo',
-      postPersonImage: require('../assets/img/imagen.jpg'),
-      postImage: require('../assets/img/imagen.jpg'),
-      likes: 762,
-      isLiked: false,
-    },
-    {
-      postTitle: 'Titulo',
-      subtitle:'Subtitulo',
-      postPersonImage: require('../assets/img/imagen.jpg'),
-      postImage: require('../assets/img/imagen.jpg'),
-      likes: 761,
-      isLiked: false,
-    },
-  ];
-  const items: Slide[] = [
-    {
-      title: 'Titulo 1',
-      desc: 'Ea et eu enim fugiat sunt reprehenderit sunt aute quis tempor ipsum cupidatat et.',
-      img: require('../assets/img/imagen.jpg'),
-    },
-    {
-      title: 'Titulo 2',
-      desc: 'Anim est quis elit proident magna quis cupidatat culpa labore Lorem ea. Exercitation mollit velit in aliquip tempor occaecat dolor minim amet dolor enim cillum excepteur. ',
-      img: require('../assets/img/imagen.jpg'),
-    },
-    {
-      title: 'Titulo 3',
-      desc: 'Ex amet duis amet nulla. Aliquip ea Lorem ea culpa consequat proident. Nulla tempor esse ad tempor sit amet Lorem. Velit ea labore aute pariatur commodo duis veniam enim.',
-      img: require('../assets/img/imagen.jpg'),
-    },
-    {
-      title: 'Titulo 3',
-      desc: 'Ex amet duis amet nulla. Aliquip ea Lorem ea culpa consequat proident. Nulla tempor esse ad tempor sit amet Lorem. Velit ea labore aute pariatur commodo duis veniam enim.',
-      img: require('../assets/img/imagen.jpg'),
-    },
-    {
-      title: 'Titulo 3',
-      desc: 'Ex amet duis amet nulla. Aliquip ea Lorem ea culpa consequat proident. Nulla tempor esse ad tempor sit amet Lorem. Velit ea labore aute pariatur commodo duis veniam enim.',
-      img: require('../assets/img/imagen.jpg'),
-    },
-  ];
-  const items2: Slide[] = [
-    {
-      title: 'Titulo 1',
-      desc: 'Ea et eu enim fugiat sunt reprehenderit sunt aute quis tempor ipsum cupidatat et.',
-      img: require('../assets/img/imagen.jpg'),
-    },
-    {
-      title: 'Titulo 2',
-      desc: 'Anim est quis elit proident magna quis cupidatat culpa labore Lorem ea. Exercitation mollit velit in aliquip tempor occaecat dolor minim amet dolor enim cillum excepteur. ',
-      img: require('../assets/img/imagen.jpg'),
-    },
-    {
-      title: 'Titulo 3',
-      desc: 'Ex amet duis amet nulla. Aliquip ea Lorem ea culpa consequat proident. Nulla tempor esse ad tempor sit amet Lorem. Velit ea labore aute pariatur commodo duis veniam enim.',
-      img: require('../assets/img/imagen.jpg'),
-    },
-    {
-      title: 'Titulo 4',
-      desc: 'Ex amet duis amet nulla. Aliquip ea Lorem ea culpa consequat proident. Nulla tempor esse ad tempor sit amet Lorem. Velit ea labore aute pariatur commodo duis veniam enim.',
-      img: require('../assets/img/imagen.jpg'),
-    },
-  ];
-  const renderItems = (item: Slide) => {
+      ano:'',
+      descripcion:'',
+      estado:1,
+      fecha:'',
+      id:0,
+      subtitulo:'',
+      titulo:'',
+      imagen:[]
+    }
+  ]);
+
+  const obtenerDatos =async()=>{
+    const resp = await vapApi.get<ResultNoticias>('/noticia/publicacion/noticia');
+    setListNoticia(
+      resp.data.noticia
+    )   
+  }
+  useEffect(() => {
+    obtenerDatos();
+  }, [])
+  const renderItems = (item: Imagen) => {
     return (
       <View
         style={
@@ -119,7 +52,7 @@ const PostComponent = () => {
           }
         }>
         <Image
-          source={item.img}
+          source={{uri:`http://192.168.1.34:4000/api/noticiaimagen/imagen/${item.nombre}`}}
           style={{
             width: '100%',
             height: 300,
@@ -132,8 +65,8 @@ const PostComponent = () => {
   };
   return (
     <View>
-      {postInfo.map((data, index) => {
-        const [like, setLike] = useState(data.isLiked);
+      {listNoticia!.map((data, index) => {
+        //const [like, setLike] = useState(data.isLiked);
         return (
           <View
             key={index}
@@ -170,11 +103,11 @@ const PostComponent = () => {
                 <View style={{paddingLeft: 5}}>
                   <Text
                     style={{fontSize: 14, fontWeight: 'bold', color: 'black'}}>
-                    {data.postTitle}
+                    {data.titulo}
                   </Text>
                   <Text
                     style={{fontSize: 12, color: 'black'}}>
-                    {data.subtitle}
+                    {data.subtitulo}
                   </Text>
                 </View>
               </View>
@@ -187,7 +120,7 @@ const PostComponent = () => {
               }}>
               <Carousel
                 //ref={(c) => { this._carousel = c; }}
-                data={(data.likes===765 ? items : items2)}
+                data={(data.imagen)}
                 renderItem={({item}: any) => renderItems(item)}
                 sliderWidth={350}
                 itemWidth={350}
@@ -196,16 +129,7 @@ const PostComponent = () => {
                   setActiveIndex(index)
                 }}
               />
-              <Pagination
-                dotsLength={data.likes===765 ? items.length : items2.length}
-                activeDotIndex={activeIndex}
-                dotStyle={{
-                  width:10,
-                  height:10,
-                  borderRadius:10,
-                  backgroundColor:'#5856D6'
-                }}
-              />
+              
             </View>
 
             <View style={{paddingHorizontal: 15, marginTop: 10}}>
@@ -215,10 +139,7 @@ const PostComponent = () => {
                   color: 'black',
                   textAlign:'justify'
                 }}>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit
-                molestiae repudiandae ex veritatis eum sapiente omnis fugiat
-                aperiam. Aliquid, quo. Natus repellendus tenetur ex esse nihil.
-                Eligendi voluptatum eos quae?
+                {data.descripcion}
               </Text>
             </View>
           </View>
