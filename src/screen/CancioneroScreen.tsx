@@ -1,81 +1,45 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import { View, Text, StyleSheet, Dimensions,ScrollView,TouchableOpacity,Image } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParams } from '../navigation/StackNavigation';
+import { Cancionero, ResultCancioneros } from '../interface/cancioner.inteface';
+import vapApi from '../api/apiVap';
 
 const { width, height } = Dimensions.get('window');
 interface Props extends StackScreenProps<RootStackParams, 'Cancionero'> { };
 
-interface Cancionero {
-    id: number,
-    titulo: string,
-    icono: any
-}
+
 
 const CancioneroScreen = ({navigation}:Props) => {
 
-    const listCancionero: Cancionero[] = [
+    const [listCancionero, setListCancionero] = useState<Cancionero[]>([
         {
-            id: 1,
-            titulo: 'Lecturas',
-            icono: require('../assets/img/oracion.png')
-        },
-        {
-            id: 2,
-            titulo: 'Visperas',
-            icono: require('../assets/img/libro.png')
-        },
-        {
-            id: 3,
-            titulo: 'Laudes',
-            icono: require('../assets/img/nota.png')
-        },
-        {
-            id: 4,
-            titulo: 'Lecturas',
-            icono: require('../assets/img/oracion.png')
-        },
-        {
-            id: 5,
-            titulo: 'Visperas',
-            icono: require('../assets/img/libro.png')
-        },
-        {
-            id: 6,
-            titulo: 'Laudes',
-            icono: require('../assets/img/nota.png')
-        },
-        {
-            id: 7,
-            titulo: 'Lecturas',
-            icono: require('../assets/img/oracion.png')
-        },
-        {
-            id: 8,
-            titulo: 'Visperas',
-            icono: require('../assets/img/libro.png')
-        },
-        {
-            id: 9,
-            titulo: 'Laudes',
-            icono: require('../assets/img/nota.png')
-        },
-        {
-            id: 10,
-            titulo: 'Lecturas',
-            icono: require('../assets/img/oracion.png')
-        },
-        {
-            id: 11,
-            titulo: 'Visperas',
-            icono: require('../assets/img/libro.png')
-        },
-        {
-            id: 12,
-            titulo: 'Laudes',
-            icono: require('../assets/img/nota.png')
-        },
-    ]
+            estado:1,
+            id:1,
+            logo:'',
+            nombre:''
+        }
+    ])
+
+    const mostrarCancioneros =async () => {
+        try {
+            const resp = await vapApi.get<ResultCancioneros>('/cancionero',{params:{
+                estado:'1'
+            }});
+            setListCancionero(
+                resp.data.cancionero
+            )
+            
+        } catch (error) {
+            console.log(error);
+            
+        }
+    }
+    useEffect(() => {
+      mostrarCancioneros();
+    }, [])
+    
+    
 
   return (
     <View style={styles.container}>
@@ -94,20 +58,20 @@ const CancioneroScreen = ({navigation}:Props) => {
                                     key={resp.id}
                                     style={styles.botonLiturgia}
                                     activeOpacity={0.6}
-                                    onPress={()=>navigation.navigate('TipoCancionero',{id:resp.id,title:resp.titulo})}
+                                    onPress={()=>navigation.navigate('TipoCancionero',{id:resp.id,title:resp.nombre})}
                                 >
                                     <View
                                         style={styles.containerImage}
                                     >
                                         <Image
                                             style={styles.iconoLiturgia}
-                                            source={resp.icono}
+                                            source={{uri:`http://192.168.1.34:4000/api/cancionero/imagen/${resp.logo}`}}
                                         />
                                     </View>
                                     <View
                                         style={styles.containerTextLit}
                                     >
-                                        <Text style={styles.textLiturgia}>{resp.titulo}</Text>
+                                        <Text style={styles.textLiturgia}>{resp.nombre}</Text>
                                     </View>
                                 </TouchableOpacity>
                             )
@@ -143,14 +107,16 @@ const styles = StyleSheet.create({
         marginBottom: 5
     },
     containerImage: {
-        width: '20%'
+        width: '20%',
+        left:5
     },
     iconoLiturgia: {
         width: 40,
-        height: 40
+        height: 40,
     },
     containerTextLit: {
         width: '80%',
+        left:5
     },
     textLiturgia: {
         color: 'black',

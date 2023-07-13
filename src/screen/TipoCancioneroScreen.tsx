@@ -1,7 +1,9 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import { Text, View, Dimensions, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { RootStackParams } from '../navigation/StackNavigation'
 import { StackScreenProps } from '@react-navigation/stack';
+import { ResultTipoCancioneros, Tipocancionero } from '../interface/tipocancionero.interface';
+import vapApi from '../api/apiVap';
 interface Props extends StackScreenProps<RootStackParams, 'TipoCancionero'> { };
 
 const {height,width} = Dimensions.get('window');
@@ -15,6 +17,30 @@ interface TipoCancionero {
 
 
 const TipoCancioneroScreen = ({route,navigation}:Props) => {
+    const [listTipo, setListTipo] = useState<Tipocancionero[]>([
+      {
+        descripcion:'',
+        id:0,
+        id_cancionero:0,
+        logo:'',
+        numero:'0',
+        subdescripcion:'',
+        titulo:''
+      }
+    ]);
+
+    const mostrarTipoCancionero =async()=>{
+      try {
+        const resp = await vapApi.get<ResultTipoCancioneros>(`/tipocancionero/cancionero/${route.params.id}`);
+        setListTipo(resp.data.tipocancionero);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    useEffect(() => {
+      mostrarTipoCancionero();
+    }, [])
+    
     const listTipoCancionero: TipoCancionero[] = [
         {
           id: 1,
@@ -83,7 +109,7 @@ const TipoCancioneroScreen = ({route,navigation}:Props) => {
               left:10
             }}>
             {
-              listTipoCancionero.map((resp, index) => {
+              listTipo.map((resp, index) => {
     
                 return (
     
@@ -105,16 +131,16 @@ const TipoCancioneroScreen = ({route,navigation}:Props) => {
                     <View style={{
                       width: '20%'
                     }}>
-                      <Image source={resp.icono} style={{ width: 50, height: 50 }} />
+                      <Image source={{uri:`http://192.168.1.34:4000/api/tipocancionero/imagen/${resp.logo}`}} style={{ width: 50, height: 50 }} />
                     </View>
                     <View
                       style={{
                         width: '80%',
                         borderBottomColor:'#BCD2F2',
-                        borderBottomWidth:0.5
+                        borderBottomWidth:0.5,
                       }}
                     >
-                      <Text style={{ color: 'black', fontFamily:'Chewy-Regular', fontSize:18 }}>{resp.titulo}</Text>
+                      <Text style={{ color: 'black', fontFamily:'Chewy-Regular', fontSize:18 }}>{resp.titulo} - {resp.numero} </Text>
                       <Text
                         style={{
                           color:'#8492A6',
@@ -123,7 +149,7 @@ const TipoCancioneroScreen = ({route,navigation}:Props) => {
                           fontFamily:'Cardo-Bold'
                         }}
                       >
-                        {resp.descripcion}
+                        {resp.subdescripcion.slice(0,100)}
                       </Text>
                     </View>
                   </TouchableOpacity>

@@ -9,7 +9,7 @@ const CapaCancioneroScreen = ({navigation, route}: Props) => {
     return (
         <View style={styles.container}>
           <View style={styles.containerImagen}>
-            <Text style={styles.textTitulo}>ORACIONES BASICAS</Text>
+            <Text style={styles.textTitulo}>{route.params.title.toUpperCase()}</Text>
           </View>
           <View style={{marginTop: height - ((height*98)/100),}}>
             {/* <Text style={
